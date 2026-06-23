@@ -9,15 +9,17 @@
    >>> EDIT THE TWO LINES MARKED "EDIT ME" BELOW. <<<
    =========================================================== */
 
-// ---- EDIT ME (1): where do you want enquiries sent? ----
-$RECIPIENT = 'your-email@example.com';
+// Settings are loaded from config.local.php, which lives ONLY on the
+// server. It is git-ignored and never deployed, so your real email
+// address never appears in the public GitHub repo.
+// >>> Create it once on the server — see config.example.php. <<<
+$config = is_file(__DIR__ . '/config.local.php')
+    ? include __DIR__ . '/config.local.php'
+    : array();
 
-// ---- EDIT ME (2): the "from" address.
-// IMPORTANT: for best delivery on Host Papa this should be a
-// real mailbox at YOUR domain, e.g. bookings@yourdomain.com.
-// (Using a gmail/outlook address here often lands in spam.)
-$FROM_ADDRESS = 'bookings@yourdomain.com';
-$FROM_NAME    = 'JJ Entertainments Website';
+$RECIPIENT    = $config['recipient']  ?? 'your-email@example.com';
+$FROM_ADDRESS = $config['from']       ?? 'bookings@yourdomain.com';
+$FROM_NAME    = $config['from_name']  ?? 'JJ Entertainments Website';
 
 // -----------------------------------------------------------
 // You normally don't need to change anything below this line.

@@ -23,19 +23,30 @@ No build tools, no frameworks, no signups — just upload the files to Host Papa
 
 ## ✏️ Before you upload — 3 quick edits
 
-### 1. Set where booking emails go (REQUIRED)
-Open **`contact.php`** and change these two lines near the top:
+### 1. Set where booking emails go (REQUIRED — done on the server)
+Your email address is kept **out of the public GitHub repo** for privacy.
+`contact.php` reads it from a file called `config.local.php` that lives **only
+on the server**.
+
+On the server (cPanel File Manager → the `jjentertainments.co.uk` folder):
+1. Copy **`config.example.php`** → rename the copy to **`config.local.php`**.
+2. Edit `config.local.php` and fill in your real details:
 
 ```php
-$RECIPIENT    = 'your-email@example.com';        // <- your email address
-$FROM_ADDRESS = 'bookings@yourdomain.com';       // <- see the note below
+return array(
+    'recipient' => 'you@example.com',                 // where bookings are emailed
+    'from'      => 'bookings@jjentertainments.co.uk', // a mailbox at YOUR domain
+    'from_name' => 'JJ Entertainments Website',
+);
 ```
 
-- **`$RECIPIENT`** is where enquiries are sent — put the email address you want to receive bookings at.
-- **`$FROM_ADDRESS`** should ideally be a real mailbox at *your own domain*
-  (for example `bookings@jjentertainments.co.uk`). You can create one in the
-  Host Papa control panel under **Email Accounts**. Using a Gmail/Outlook
-  address here often makes the email land in spam.
+- **`recipient`** is where enquiries are sent.
+- **`from`** should ideally be a real mailbox at *your own domain* (create one in
+  cPanel → **Email Accounts**). Using a Gmail/Outlook address here often makes the
+  email land in spam.
+
+`config.local.php` is git-ignored and is never overwritten by the deploy
+workflow, so your email stays private and survives every deploy.
 
 ### 2. Fill in your own words and details
 Search `index.html` for **`EDIT ME`** — those comments mark the spots to personalise:
@@ -80,6 +91,33 @@ You'll need an SFTP client. **[FileZilla](https://filezilla-project.org/)** is f
 5. **Visit your website** (`https://yourdomain.com`) — done! 🎉
 
 ---
+
+## 🤖 Automatic deploys (GitHub Actions)
+
+This repo includes `.github/workflows/deploy.yml`, which **uploads the site to
+Host Papa automatically every time you push to `main`** (over FTPS).
+
+**One-time setup** — add your FTP login as repository secrets:
+
+1. On GitHub: **Settings → Secrets and variables → Actions → New repository secret.**
+2. Add three secrets:
+   - `FTP_SERVER` — your FTP hostname (from cPanel → **FTP Accounts → Configure
+     FTP Client**). Often the server hostname; using that avoids TLS errors.
+   - `FTP_USERNAME` — the FTP account's full username.
+   - `FTP_PASSWORD` — that account's password.
+
+**Recommended:** create a **dedicated FTP account** in cPanel (**FTP Accounts**)
+whose Directory is set to `jjentertainments.co.uk`. Then it can only ever write
+to this site's folder, and the workflow's `server-dir: ./` is correct. (If you
+instead use the main cPanel FTP account, change `server-dir` in `deploy.yml` to
+`jjentertainments.co.uk/`.)
+
+After the secrets are set, every `git push` to `main` deploys the changes.
+You can also run it on demand from the repo's **Actions** tab.
+
+> First deploy only: remember `config.local.php` is **not** part of the repo, so
+> create it once on the server (see edit #1 above). It won't be touched by future
+> deploys.
 
 ## ✅ Testing the booking form
 

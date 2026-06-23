@@ -1,0 +1,41 @@
+name: Deploy to Host Papa
+
+# Runs on every push to main, and can also be triggered by hand
+# from the repo's Actions tab.
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to Host Papa via FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server:   ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps          # encrypted FTP over TLS (port 21)
+          port:     21
+
+          # Where the files go ON THE SERVER.
+          # './' assumes the FTP account lands directly in the
+          # jjentertainments.co.uk folder (recommended — see README).
+          # If you use the MAIN cPanel FTP account instead, change this
+          # to: jjentertainments.co.uk/
+          server-dir: ./
+
+          # Things that should NOT be uploaded to the live site:
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/screens/**
+            **/README.md
+            **/config.example.php
+            **/.ftp-deploy-sync-state.json
