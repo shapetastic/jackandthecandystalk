@@ -24,10 +24,10 @@ jobs:
           port:     21
 
           # Where the files go ON THE SERVER.
-          # The FTP account (dshackley@shackleyhomes.co.uk) logs in at
-          # /home/shack346, so we point at the site's subfolder here.
-          # Result: /home/shack346/jjentertainments.co.uk/
-          server-dir: jjentertainments.co.uk/
+          # The FTP account logs in directly inside the site's document
+          # root (/home/shack346/jjentertainments.co.uk), so files go at
+          # the root of the login — no subfolder needed.
+          server-dir: ./
 
           # Things that should NOT be uploaded to the live site:
           exclude: |
