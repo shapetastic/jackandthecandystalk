@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="260" viewBox="0 0 260 260">
+  <!-- Scattered "sprinkle" confetti tile — JJ Entertainments brand pattern.
+       Pink #ec1c8e, blue #3fa9e0, yellow #f9a826 on transparent. -->
+  <g stroke-width="7" stroke-linecap="round" fill="none">
+    <!-- pink -->
+    <line x1="24"  y1="20"  x2="44"  y2="30"  stroke="#ec1c8e"/>
+    <line x1="150" y1="14"  x2="168" y2="6"   stroke="#ec1c8e"/>
+    <line x1="208" y1="44"  x2="200" y2="66"  stroke="#ec1c8e"/>
+    <line x1="60"  y1="96"  x2="80"  y2="92"  stroke="#ec1c8e"/>
+    <line x1="120" y1="118" x2="112" y2="140" stroke="#ec1c8e"/>
+    <line x1="232" y1="150" x2="214" y2="160" stroke="#ec1c8e"/>
+    <line x1="36"  y1="176" x2="56"  y2="184" stroke="#ec1c8e"/>
+    <line x1="150" y1="210" x2="170" y2="204" stroke="#ec1c8e"/>
+    <line x1="96"  y1="232" x2="88"  y2="252" stroke="#ec1c8e"/>
+    <!-- blue -->
+    <line x1="92"  y1="30"  x2="84"  y2="52"  stroke="#3fa9e0"/>
+    <line x1="186" y1="92"  x2="206" y2="86"  stroke="#3fa9e0"/>
+    <line x1="14"  y1="120" x2="34"  y2="128" stroke="#3fa9e0"/>
+    <line x1="160" y1="138" x2="180" y2="132" stroke="#3fa9e0"/>
+    <line x1="244" y1="206" x2="236" y2="228" stroke="#3fa9e0"/>
+    <line x1="116" y1="178" x2="136" y2="186" stroke="#3fa9e0"/>
+    <line x1="206" y1="244" x2="226" y2="238" stroke="#3fa9e0"/>
+    <line x1="18"  y1="226" x2="38"  y2="232" stroke="#3fa9e0"/>
+    <!-- yellow -->
+    <line x1="128" y1="56"  x2="148" y2="50"  stroke="#f9a826"/>
+    <line x1="232" y1="22"  x2="224" y2="44"  stroke="#f9a826"/>
+    <line x1="48"  y1="58"  x2="40"  y2="78"  stroke="#f9a826"/>
+    <line x1="248" y1="110" x2="240" y2="132" stroke="#f9a826"/>
+    <line x1="74"  y1="146" x2="94"  y2="152" stroke="#f9a826"/>
+    <line x1="186" y1="186" x2="178" y2="206" stroke="#f9a826"/>
+    <line x1="132" y1="244" x2="152" y2="250" stroke="#f9a826"/>
+  </g>
+</svg>

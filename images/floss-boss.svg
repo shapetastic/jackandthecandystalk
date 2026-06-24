@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 130" width="260" height="130" role="img" aria-label="The Floss Boss sunglasses">
+  <defs>
+    <linearGradient id="lensL" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff7ac0"/>
+      <stop offset="100%" stop-color="#ec1c8e"/>
+    </linearGradient>
+    <linearGradient id="lensR" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7fd0ff"/>
+      <stop offset="100%" stop-color="#3fa9e0"/>
+    </linearGradient>
+  </defs>
+
+  <g stroke="#0a0a0c" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <!-- arms -->
+    <path d="M20 44 L52 56" fill="none" stroke="#f9a826"/>
+    <path d="M240 44 L208 56" fill="none" stroke="#f9a826"/>
+    <!-- bridge -->
+    <path d="M120 60 Q130 50 140 60" fill="none" stroke="#f9a826"/>
+    <!-- left lens -->
+    <path d="M58 52 Q58 92 92 96 Q120 98 120 66 Q120 54 100 52 Z" fill="url(#lensL)"/>
+    <!-- right lens -->
+    <path d="M202 52 Q202 92 168 96 Q140 98 140 66 Q140 54 160 52 Z" fill="url(#lensR)"/>
+  </g>
+  <!-- lens shine -->
+  <g fill="#ffffff" opacity="0.55">
+    <rect x="74" y="60" width="6" height="22" rx="3" transform="rotate(18 77 71)"/>
+    <rect x="184" y="60" width="6" height="22" rx="3" transform="rotate(18 187 71)"/>
+  </g>
+</svg>
