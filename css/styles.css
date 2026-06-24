@@ -92,6 +92,19 @@ img { max-width: 100%; display: block; }
   color: transparent;
 }
 
+/* Readable panels — keep body copy legible over the confetti background.
+   (Echoes the boxed "Based in Swansea" note.) */
+.hero-sub,
+.about-inner p:not(.about-note),
+.section-lead,
+.booking-text p {
+  background: rgba(10, 10, 14, 0.78);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px 22px;
+  backdrop-filter: blur(2px);
+}
+
 /* ---------- Buttons ---------- */
 .btn {
   display: inline-block;
