@@ -35,6 +35,7 @@ jobs:
             **/.git*/**
             **/.github/**
             **/screens/**
+            **/docs/**
             **/README.md
             **/config.example.php
             **/.ftp-deploy-sync-state.json
