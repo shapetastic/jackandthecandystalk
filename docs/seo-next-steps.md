@@ -197,20 +197,26 @@ send an enquiry — instead of guessing.
 
 ---
 
-## 9. Photos & a share image (needs your input) — ⭐⭐⭐ ⏱️ ongoing
+## 9. Photos & a share image — ⭐⭐⭐ ⏱️ ongoing
 
 **Why:** Real photos help on the website, on Google Business Profile, and on
 social. They build trust and give Google more to work with.
 
 **Steps / what to send your developer:**
-1. **Real event photos** — bright, in-focus shots of the machine, the candy
-   floss, and happy guests (get permission for photos of children). These replace
-   the emoji placeholders in the website gallery and go on GBP/social. Your
-   developer will add proper **keyword-rich descriptions (alt text)** like
-   *"Candy floss machine at a Swansea children's birthday party"*.
-2. **A social share image** — a single nice 1200×630 pixel image (logo + a candy
-   floss photo). This is what shows when the website link is shared on
-   Facebook/WhatsApp. Right now the logo is used as a stand-in.
+1. **Real event photos** — ✅ **Done 24 July 2026.** Six photos from the Mumbles
+   10th birthday party replaced the emoji placeholders in the gallery, each with
+   its own keyword-rich alt text mentioning candy floss and Swansea/Mumbles.
+   Every shot is framed on the stall and the two JJ Entertainments lads running
+   it, so **no party guest is identifiable** — keep to that rule for future
+   photos, or get written permission from a parent first. Unedited originals are
+   in `screens/`, which is git-ignored and never uploaded.
+   *Still worth doing:* put the same photos on Google Business Profile and social.
+2. **A social share image** — ✅ **Done 24 July 2026.**
+   `images/og-candy-floss-swansea.jpg` (1200×630) now drives Facebook/WhatsApp/X
+   link previews and the LocalBusiness `image` field, replacing the logo
+   stand-in. If you shared the link before that date, run it through Facebook's
+   [Sharing Debugger](https://developers.facebook.com/tools/debug/) and hit
+   "Scrape Again" to clear the cached logo preview.
 3. **Future idea:** if you expand to nearby towns, dedicated pages like
    *"Candy floss hire in Neath"* can each rank for their own local searches. Not
    needed yet — just a growth option.
@@ -236,7 +242,10 @@ For reference — these were built into the site so you don't need to:
 - Location-focused page **title** and **description** (mention "Swansea").
 - **LocalBusiness structured data** (tells Google your name, area, phone, email
   and £20 package) and **FAQ structured data** (can win extra space in results).
-- **Facebook/WhatsApp link previews** (Open Graph) and **Twitter cards**.
+- **Facebook/WhatsApp link previews** (Open Graph) and **Twitter cards**, using a
+  real 1200×630 photo of the stall rather than the logo.
+- **Six real party photos in the gallery**, each with its own keyword-rich alt
+  text, sized and cropped so no party guest is identifiable.
 - **`sitemap.xml`** and **`robots.txt`** so search engines can crawl efficiently.
 - A **canonical tag** so Google treats the homepage as one page.
 - An **FAQ section** and extra Swansea wording for more keyword coverage.
