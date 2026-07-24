@@ -55,9 +55,16 @@ Search `index.html` for **`EDIT ME`** — those comments mark the spots to perso
 - Your phone, email and social links (footer)
 
 ### 3. Add real photos (optional, do anytime)
-The gallery and hero use simple placeholder graphics. To use your own photos,
-drop them in the `images/` folder and update the picture references in
-`index.html` (look for the `gallery-item` blocks and the `EDIT ME` notes).
+Drop them in the `images/` folder and update the `<img>` tags inside the
+`gallery-grid` block in `index.html`. Square images around 800×800 work best —
+the grid crops everything to a square. Give each one meaningful `alt` text
+mentioning candy floss and your area; it is what Google reads.
+
+⚠️ **Everything in `images/` is published live** — the deploy uploads the whole
+folder, so any photo you put there is on the public internet at a guessable
+address. Before adding a photo showing someone's face, get their permission
+(a parent's or guardian's, if they're under 18). Keep unpublished originals in
+`screens/`, which is git-ignored and never uploaded.
 
 ---
 
