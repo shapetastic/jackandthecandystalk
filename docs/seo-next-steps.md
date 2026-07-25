@@ -210,6 +210,11 @@ social. They build trust and give Google more to work with.
    it, so **no party guest is identifiable** — keep to that rule for future
    photos, or get written permission from a parent first. Unedited originals are
    in `screens/`, which is git-ignored and never uploaded.
+   **Updated 25 July 2026:** three of Jack's close-ups of the machine added, so
+   the gallery is now nine. About a dozen more good machine shots are sitting in
+   `screens/originals-2026-07-25/` — they're too similar to each other for the
+   website, but they're ideal for Google Business Profile and social posts,
+   which want a steady stream of photos.
    *Still worth doing:* put the same photos on Google Business Profile and social.
 2. **A social share image** — ✅ **Done 24 July 2026.**
    `images/og-candy-floss-swansea.jpg` (1200×630) now drives Facebook/WhatsApp/X
@@ -244,8 +249,9 @@ For reference — these were built into the site so you don't need to:
   and £20 package) and **FAQ structured data** (can win extra space in results).
 - **Facebook/WhatsApp link previews** (Open Graph) and **Twitter cards**, using a
   real 1200×630 photo of the stall rather than the logo.
-- **Six real party photos in the gallery**, each with its own keyword-rich alt
-  text, sized and cropped so no party guest is identifiable.
+- **Nine real photos in the gallery** — the stall in action plus close-ups of the
+  machine itself — each with its own keyword-rich alt text, sized and cropped so
+  no party guest is identifiable.
 - **`sitemap.xml`** and **`robots.txt`** so search engines can crawl efficiently.
 - A **canonical tag** so Google treats the homepage as one page.
 - An **FAQ section** and extra Swansea wording for more keyword coverage.
