@@ -1,7 +1,8 @@
 # JJ Entertainments — Candy Floss Machine Hire Website
 
 A fun, colourful, mobile-friendly website for a candy floss machine hire business.
-It's a single page with a booking enquiry form that emails you each enquiry.
+A main page with a booking enquiry form that emails you each enquiry, plus a
+photo gallery page.
 
 No build tools, no frameworks, no signups — just upload the files to Host Papa.
 
@@ -11,12 +12,13 @@ No build tools, no frameworks, no signups — just upload the files to Host Papa
 
 | File / folder       | What it does                                                        |
 |---------------------|---------------------------------------------------------------------|
-| `index.html`        | The whole website (hero, services, pricing, gallery, booking form)  |
+| `index.html`        | The main page (hero, services, pricing, FAQ, booking form)          |
+| `gallery.html`      | The photo gallery page, linked from the menu and under the hero photo |
 | `thank-you.html`    | The "thanks!" page shown after someone sends an enquiry             |
 | `contact.php`       | Receives the form and emails the enquiry to you                     |
 | `css/styles.css`    | All the styling (colours, layout). Edit colours at the very top     |
-| `js/main.js`        | Menu, form checks, footer year                                      |
-| `images/`           | The logo and candy floss pictures (SVG placeholders)                |
+| `js/main.js`        | Menu, form checks, the rotating hero photos, footer year            |
+| `images/`           | The logo and the candy floss photos                                 |
 | `README.md`         | This file                                                           |
 
 ---
@@ -56,9 +58,14 @@ Search `index.html` for **`EDIT ME`** — those comments mark the spots to perso
 
 ### 3. Add real photos (optional, do anytime)
 Drop them in the `images/` folder and update the `<img>` tags inside the
-`gallery-grid` block in `index.html`. Square images around 800×800 work best —
+`gallery-grid` block in **`gallery.html`**. Square images around 800×800 work best —
 the grid crops everything to a square. Give each one meaningful `alt` text
 mentioning candy floss and your area; it is what Google reads.
+
+To add a photo to the rotating picture at the top of the home page, copy one of
+the `hero-slide` lines in `index.html`. Every slide after the first uses
+`data-src` instead of `src` — that is deliberate, so the first photo appears
+quickly and the rest load afterwards. The dots underneath adjust themselves.
 
 ⚠️ **Everything in `images/` is published live** — the deploy uploads the whole
 folder, so any photo you put there is on the public internet at a guessable
@@ -125,6 +132,22 @@ You can also run it on demand from the repo's **Actions** tab.
 > First deploy only: remember `config.local.php` is **not** part of the repo, so
 > create it once on the server (see edit #1 above). It won't be touched by future
 > deploys.
+
+### If a change doesn't show up on the live site
+
+Browsers hang on to `styles.css` and `main.js` for a long time, so a visitor can
+keep seeing the old version even after a successful deploy. Both pages link to
+them with a version number:
+
+```html
+<link rel="stylesheet" href="css/styles.css?v=2">
+<script src="js/main.js?v=2"></script>
+```
+
+**Whenever you edit either file, bump that number** (`?v=3`, `?v=4`…) in both
+`index.html` and `gallery.html`. That makes every browser fetch the new copy.
+A hard refresh (**Ctrl+F5**) fixes it just for you; bumping the number fixes it
+for everyone.
 
 ## ✅ Testing the booking form
 

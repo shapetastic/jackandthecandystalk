@@ -34,7 +34,9 @@
 
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="apple-touch-icon" href="images/favicon.png">
-  <link rel="stylesheet" href="css/styles.css">
+  <!-- The ?v= number busts the browser's cache. Bump it whenever you edit
+       css/styles.css or js/main.js, or returning visitors keep the old one. -->
+  <link rel="stylesheet" href="css/styles.css?v=2">
 </head>
 <body>
 
@@ -54,7 +56,7 @@
         <a href="#home">Home</a>
         <a href="#services">Services</a>
         <a href="#pricing">Pricing</a>
-        <a href="#gallery">Gallery</a>
+        <a href="gallery.html">Gallery</a>
         <a href="#book" class="nav-cta">Book Now</a>
       </nav>
     </div>
@@ -85,20 +87,33 @@
               <img src="images/gallery-fresh-floss.jpg" width="800" height="800"
                    fetchpriority="high" class="hero-slide is-active"
                    alt="A giant stick of blue raspberry candy floss spun fresh at a Swansea party">
-              <!-- These two sit in the same box as the first photo, just see-through, so
-                   loading="lazy" would not defer them. Low priority instead, so they
-                   queue up behind the photo that's actually on screen. -->
-              <img src="images/gallery-blue-raspberry-cone.jpg" width="800" height="800"
-                   fetchpriority="low" class="hero-slide"
+              <!-- The rest sit in the same box as the first photo, just see-through, so
+                   loading="lazy" would not defer them. js/main.js fills in their src
+                   once the page has loaded, keeping the first photo nice and quick.
+                   To add another, copy one of these lines and change the file and alt. -->
+              <img data-src="images/gallery-blue-raspberry-cone.jpg" width="800" height="800"
+                   class="hero-slide"
                    alt="A fat cone of blue raspberry candy floss lifted straight from the machine">
-              <img src="images/gallery-floss-spinning-in-bowl.jpg" width="800" height="800"
-                   fetchpriority="low" class="hero-slide"
+              <img data-src="images/gallery-floss-spinning-in-bowl.jpg" width="800" height="800"
+                   class="hero-slide"
                    alt="Close up of candy floss spinning out into the bowl of the machine">
+              <img data-src="images/gallery-floss-boss-stall.jpg" width="800" height="800"
+                   class="hero-slide"
+                   alt="The JJ Entertainments candy floss stall at a children's birthday party in Mumbles, Swansea">
+              <img data-src="images/gallery-party-setup.jpg" width="800" height="800"
+                   class="hero-slide"
+                   alt="Candy floss machine, bunting and party setup ready for a birthday party in Swansea">
+              <img data-src="images/gallery-handing-over.jpg" width="800" height="800"
+                   class="hero-slide"
+                   alt="Candy floss hire in Swansea: fresh floss served straight from the machine">
             </div>
           </div>
           <!-- The dots are built by js/main.js, so there are none without JS. -->
           <div class="hero-carousel-dots" id="heroCarouselDots"></div>
         </div>
+        <!-- Old links to /#gallery still land here, now that the photos have
+             their own page. -->
+        <a href="gallery.html" class="hero-gallery-link" id="gallery">See more photos 📸</a>
       </div>
     </div>
   </section>
@@ -210,52 +225,7 @@
     </div>
   </section>
 
-  <!-- ===== Gallery ===== -->
-  <section class="gallery" id="gallery">
-    <div class="container">
-      <h2 class="section-title bubble"><span class="t-yellow">A little</span> <span class="t-pink">taste</span> 📸</h2>
-      <p class="section-lead">Freshly spun candy floss &mdash; and the machine that makes it.</p>
-
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <img src="images/gallery-floss-boss-stall.jpg" width="800" height="800" loading="lazy"
-               alt="The JJ Entertainments candy floss stall at a children's birthday party in Mumbles, Swansea">
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery-candy-floss-machine.jpg" width="800" height="800" loading="lazy"
-               alt="The candy floss machine we bring to parties in Swansea, set up on its pink stall">
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery-party-setup.jpg" width="800" height="800" loading="lazy"
-               alt="Candy floss machine, bunting and party setup ready for a birthday party in Swansea">
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery-floss-spinning-in-bowl.jpg" width="800" height="800" loading="lazy"
-               alt="Close up of candy floss spinning out into the bowl of the machine">
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery-fresh-floss.jpg" width="800" height="800" loading="lazy"
-               alt="A giant stick of blue raspberry candy floss spun fresh at a Swansea party">
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery-spinning-floss.jpg" width="800" height="800" loading="lazy"
-               alt="Candy floss being spun onto a stick at a children's party in Mumbles">
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery-blue-raspberry-cone.jpg" width="800" height="800" loading="lazy"
-               alt="A fat cone of blue raspberry candy floss lifted straight from the machine">
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery-serving-floss.jpg" width="800" height="800" loading="lazy"
-               alt="Blue raspberry candy floss lifted from the machine at a Swansea birthday party">
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery-handing-over.jpg" width="800" height="800" loading="lazy"
-               alt="Candy floss hire in Swansea: fresh floss served straight from the machine">
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- The photo gallery lives on its own page now — see gallery.html. -->
 
   <!-- ===== FAQ ===== -->
   <section class="faq" id="faq">
@@ -478,6 +448,6 @@
   }
   </script>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=2"></script>
 </body>
 </html>

@@ -162,6 +162,8 @@ img { max-width: 100%; display: block; }
   transition: background .2s ease, color .2s ease;
 }
 .nav-menu a:hover { background: rgba(236, 28, 142, 0.16); color: var(--pink); }
+/* The page you're already on */
+.nav-menu a[aria-current="page"] { color: var(--pink); background: rgba(236, 28, 142, 0.12); }
 .nav-menu .nav-cta {
   background: var(--ring);
   color: #fff;
@@ -216,7 +218,14 @@ img { max-width: 100%; display: block; }
 .hero-buttons { display: flex; flex-wrap: wrap; gap: 14px; margin: 26px 0 18px; }
 .hero-trust { font-size: .95rem; color: var(--muted); font-weight: 700; }
 
-.hero-art { flex: 0 1 420px; display: flex; justify-content: center; }
+/* Column so the "See more photos" link sits under the carousel */
+.hero-art {
+  flex: 0 1 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
 .floating { animation: float 4s ease-in-out infinite; }
 @keyframes float {
   0%, 100% { transform: translateY(0) rotate(-2deg); }
@@ -277,6 +286,26 @@ img { max-width: 100%; display: block; }
   transform: scale(1.2);
 }
 .hero-dot:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 999px; }
+
+/* Quiet link through to the full gallery page */
+.hero-gallery-link {
+  display: inline-block;
+  padding: 9px 20px;
+  border-radius: 999px;
+  border: 2px solid var(--line);
+  background: rgba(10, 10, 14, 0.78);      /* readable over the confetti */
+  color: var(--text);
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  font-size: .95rem;
+  text-decoration: none;
+  transition: border-color .2s ease, color .2s ease, transform .15s ease;
+}
+.hero-gallery-link:hover {
+  border-color: var(--pink);
+  color: var(--pink);
+  transform: translateY(-2px);
+}
 
 /* gradient ring rule used to separate sections */
 .brand-rule { height: 5px; background: var(--ring); border: none; margin: 0; }
@@ -455,6 +484,11 @@ img { max-width: 100%; display: block; }
 .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .gallery-item:hover { transform: scale(1.04) rotate(-2deg); }
 
+/* Closing nudge at the bottom of the gallery page */
+.gallery-cta { text-align: center; margin-top: 50px; }
+.gallery-cta h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin: 0 0 10px; }
+.gallery-cta p { color: var(--muted); max-width: 560px; margin: 0 auto 22px; }
+
 /* ---------- Booking ---------- */
 .booking { padding: 80px 0; background: rgba(139, 99, 214, 0.08); }
 .booking-inner {
@@ -579,7 +613,9 @@ img { max-width: 100%; display: block; }
 /* Respect reduced-motion preferences */
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; scroll-behavior: auto; }
-  /* The carousel crossfade is a transition, so it needs turning off separately.
-     js/main.js also skips the auto-advance entirely. */
-  .hero-slide { transition: none; }
 }
+/* The carousel crossfade is a transition, so the media query above does not
+   catch it. js/main.js adds this class when the visitor has asked for less
+   motion: the photos still change, they just cut straight over instead of
+   fading. Hovering, or clicking a dot, still stops them. */
+.hero-carousel.no-fade .hero-slide { transition: none; }

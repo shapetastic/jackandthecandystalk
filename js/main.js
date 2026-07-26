@@ -78,8 +78,10 @@
 
   /* ---- Hero photo carousel ----
      Slowly crossfades between the hero photos. Pauses when the visitor
-     hovers or tabs into it, and stays still if they've asked for less
-     motion. The dots are built here so there are none without JS. */
+     hovers or tabs into it. If they've asked for less motion we keep the
+     photos changing but cut straight over instead of fading, and give them
+     a little longer to look. The dots are built here so there are none
+     without JS. */
   var carousel = document.getElementById('heroCarousel');
   var dotsBox = document.getElementById('heroCarouselDots');
 
@@ -88,7 +90,28 @@
     var dots = [];
     var current = 0;
     var timer = null;
-    var likesMotion = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var autoplay = true;   // false once the visitor picks a photo themselves
+    var lessMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var delay = lessMotion ? 7000 : 5000;
+
+    if (lessMotion) carousel.classList.add('no-fade');
+
+    // Only the first photo has a src in the HTML, so the hero paints fast.
+    // The others fill in once everything else has finished loading.
+    var loadRemainingPhotos = function () {
+      slides.forEach(function (slide) {
+        if (slide.dataset.src) {
+          slide.src = slide.dataset.src;
+          slide.removeAttribute('data-src');
+        }
+      });
+    };
+
+    if (document.readyState === 'complete') {
+      loadRemainingPhotos();
+    } else {
+      window.addEventListener('load', loadRemainingPhotos);
+    }
 
     var show = function (index) {
       current = (index + slides.length) % slides.length;
@@ -109,8 +132,8 @@
     };
 
     var start = function () {
-      if (!likesMotion || timer || slides.length < 2) return;
-      timer = setInterval(function () { show(current + 1); }, 5000);
+      if (!autoplay || timer || slides.length < 2) return;
+      timer = setInterval(function () { show(current + 1); }, delay);
     };
 
     // One dot per photo
@@ -123,7 +146,7 @@
 
       dot.addEventListener('click', function () {
         stop();          // they've picked one, so stop moving it for them
-        likesMotion = false;
+        autoplay = false;
         show(i);
       });
 

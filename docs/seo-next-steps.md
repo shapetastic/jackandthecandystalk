@@ -252,8 +252,14 @@ For reference — these were built into the site so you don't need to:
 - **Nine real photos in the gallery** — the stall in action plus close-ups of the
   machine itself — each with its own keyword-rich alt text, sized and cropped so
   no party guest is identifiable.
+- **A dedicated gallery page** (`gallery.html`) — a second indexable page with its
+  own title, description and `ImageGallery` + breadcrumb structured data. It is
+  reached from the menu and from a "See more photos" link under the hero photo,
+  and the home page is shorter as a result, so the booking form is closer to the top.
+- **Six photos rotating in the hero** — only the first loads with the page, so the
+  extras cost nothing at page-load time.
 - **`sitemap.xml`** and **`robots.txt`** so search engines can crawl efficiently.
-- A **canonical tag** so Google treats the homepage as one page.
+- A **canonical tag** on each page so Google knows which URL is the real one.
 - An **FAQ section** and extra Swansea wording for more keyword coverage.
 - Fixed the broken favicon on the thank-you page.
 - **Placeholders ready** for: social profile links (`sameAs`), a Search Console
