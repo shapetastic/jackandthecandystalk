@@ -78,8 +78,27 @@
         </div>
         <p class="hero-trust">⭐ Family-run &nbsp;•&nbsp; 🎉 Fully set up for you &nbsp;•&nbsp; 🧼 Clean &amp; safe</p>
       </div>
-      <div class="hero-art" aria-hidden="true">
-        <img src="images/candy-floss.svg" alt="" class="floating">
+      <div class="hero-art">
+        <div class="hero-carousel" id="heroCarousel">
+          <div class="hero-carousel-frame">
+            <div class="hero-carousel-window">
+              <img src="images/gallery-fresh-floss.jpg" width="800" height="800"
+                   fetchpriority="high" class="hero-slide is-active"
+                   alt="A giant stick of blue raspberry candy floss spun fresh at a Swansea party">
+              <!-- These two sit in the same box as the first photo, just see-through, so
+                   loading="lazy" would not defer them. Low priority instead, so they
+                   queue up behind the photo that's actually on screen. -->
+              <img src="images/gallery-blue-raspberry-cone.jpg" width="800" height="800"
+                   fetchpriority="low" class="hero-slide"
+                   alt="A fat cone of blue raspberry candy floss lifted straight from the machine">
+              <img src="images/gallery-floss-spinning-in-bowl.jpg" width="800" height="800"
+                   fetchpriority="low" class="hero-slide"
+                   alt="Close up of candy floss spinning out into the bowl of the machine">
+            </div>
+          </div>
+          <!-- The dots are built by js/main.js, so there are none without JS. -->
+          <div class="hero-carousel-dots" id="heroCarouselDots"></div>
+        </div>
       </div>
     </div>
   </section>

@@ -76,6 +76,83 @@
     errorBox.hidden = false;
   }
 
+  /* ---- Hero photo carousel ----
+     Slowly crossfades between the hero photos. Pauses when the visitor
+     hovers or tabs into it, and stays still if they've asked for less
+     motion. The dots are built here so there are none without JS. */
+  var carousel = document.getElementById('heroCarousel');
+  var dotsBox = document.getElementById('heroCarouselDots');
+
+  if (carousel && dotsBox) {
+    var slides = carousel.querySelectorAll('.hero-slide');
+    var dots = [];
+    var current = 0;
+    var timer = null;
+    var likesMotion = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    var show = function (index) {
+      current = (index + slides.length) % slides.length;
+
+      slides.forEach(function (slide, i) {
+        slide.classList.toggle('is-active', i === current);
+      });
+      dots.forEach(function (dot, i) {
+        dot.setAttribute('aria-current', i === current ? 'true' : 'false');
+      });
+    };
+
+    var stop = function () {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+    };
+
+    var start = function () {
+      if (!likesMotion || timer || slides.length < 2) return;
+      timer = setInterval(function () { show(current + 1); }, 5000);
+    };
+
+    // One dot per photo
+    slides.forEach(function (slide, i) {
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'hero-dot';
+      dot.setAttribute('aria-label', 'Show photo ' + (i + 1) + ' of ' + slides.length);
+      dot.setAttribute('aria-current', i === 0 ? 'true' : 'false');
+
+      dot.addEventListener('click', function () {
+        stop();          // they've picked one, so stop moving it for them
+        likesMotion = false;
+        show(i);
+      });
+
+      dotsBox.appendChild(dot);
+      dots.push(dot);
+    });
+
+    // Left/right arrows step through the photos
+    dotsBox.addEventListener('keydown', function (e) {
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+      e.preventDefault();
+      show(current + (e.key === 'ArrowRight' ? 1 : -1));
+      dots[current].focus();
+    });
+
+    // Hold still while they're looking at it
+    carousel.addEventListener('mouseenter', stop);
+    carousel.addEventListener('mouseleave', start);
+    carousel.addEventListener('focusin', stop);
+    carousel.addEventListener('focusout', start);
+
+    // No point crossfading a tab nobody is looking at
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) { stop(); } else { start(); }
+    });
+
+    start();
+  }
+
   /* ---- Auto-update the year in the footer ---- */
   var yearEl = document.getElementById('year');
   if (yearEl) {

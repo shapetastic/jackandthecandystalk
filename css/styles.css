@@ -216,13 +216,67 @@ img { max-width: 100%; display: block; }
 .hero-buttons { display: flex; flex-wrap: wrap; gap: 14px; margin: 26px 0 18px; }
 .hero-trust { font-size: .95rem; color: var(--muted); font-weight: 700; }
 
-.hero-art { flex: 0 1 360px; display: flex; justify-content: center; }
-.hero-art img { width: 320px; max-width: 80vw; filter: drop-shadow(0 20px 30px rgba(236,28,142,0.35)); }
+.hero-art { flex: 0 1 420px; display: flex; justify-content: center; }
 .floating { animation: float 4s ease-in-out infinite; }
 @keyframes float {
   0%, 100% { transform: translateY(0) rotate(-2deg); }
   50%      { transform: translateY(-18px) rotate(2deg); }
 }
+
+/* Hero photo carousel — real photos in a brand-coloured frame */
+.hero-carousel { width: 380px; max-width: min(82vw, 380px); }
+.hero-carousel-frame {
+  padding: 6px;                              /* thickness of the gradient ring */
+  background: var(--ring);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow), var(--glow-pink);
+  animation: float 4s ease-in-out infinite;
+}
+.hero-carousel-window {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: calc(var(--radius) - 6px);
+  background: var(--panel-2);                /* shows while a lazy photo loads */
+}
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0;
+  transition: opacity .8s ease;
+}
+.hero-slide.is-active { opacity: 1; }
+
+.hero-carousel-dots { display: flex; justify-content: center; gap: 6px; margin-top: 18px; }
+.hero-dot {
+  width: 24px;                               /* generous tap target... */
+  height: 24px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.hero-dot::before {
+  content: "";
+  width: 11px;                               /* ...around a small visible dot */
+  height: 11px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+  border: 1px solid var(--line);
+  transition: background .2s ease, transform .2s ease;
+}
+.hero-dot[aria-current="true"]::before {
+  background: var(--pink);
+  border-color: var(--pink);
+  transform: scale(1.2);
+}
+.hero-dot:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 999px; }
 
 /* gradient ring rule used to separate sections */
 .brand-rule { height: 5px; background: var(--ring); border: none; margin: 0; }
@@ -507,7 +561,8 @@ img { max-width: 100%; display: block; }
   .nav-menu.open { transform: translateY(0); }
   .nav-menu a { padding: 12px 14px; }
 
-  .hero-inner { flex-direction: column-reverse; text-align: center; }
+  /* Headline and Book Now come first; the photos sit underneath. */
+  .hero-inner { flex-direction: column; text-align: center; }
   .hero-buttons { justify-content: center; }
   .hero-sub { margin-left: auto; margin-right: auto; }
 
@@ -524,4 +579,7 @@ img { max-width: 100%; display: block; }
 /* Respect reduced-motion preferences */
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; scroll-behavior: auto; }
+  /* The carousel crossfade is a transition, so it needs turning off separately.
+     js/main.js also skips the auto-advance entirely. */
+  .hero-slide { transition: none; }
 }
