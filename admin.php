@@ -220,8 +220,8 @@ function email_html($b, $copy_banner = '') {
 <tr><td align="center" style="padding:24px 12px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;background:#ffffff;border-radius:16px;overflow:hidden;font-family:Arial,Helvetica,sans-serif;">
 ' . $banner . '
-<tr><td align="center" style="background:#0a0a0c;padding:26px 24px 20px;">
-  <img src="' . e($SITE_URL) . '/images/logo.png" width="120" height="120" alt="JJ Entertainments" style="display:block;border:0;width:120px;height:120px;">
+<tr><td style="background:#0a0a0c;padding:0;line-height:0;font-size:0;">
+  <img src="' . e($SITE_URL) . '/images/email-header.jpg" width="600" alt="JJ Entertainments" style="display:block;border:0;width:100%;max-width:600px;height:auto;">
 </td></tr>
 <tr><td style="height:6px;line-height:6px;font-size:0;background:#ec1c8e;background-image:linear-gradient(90deg,#3fa9e0,#8b63d6,#ec1c8e,#f9a826);">&nbsp;</td></tr>
 <tr><td style="padding:30px 28px 8px;">
