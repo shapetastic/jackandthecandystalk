@@ -23,4 +23,9 @@ return array(
     'from'      => 'bookings@jjentertainments.co.uk',
 
     'from_name' => 'JJ Entertainments Website',
+
+    // Password for admin.php (sending booking confirmations). This is a
+    // HASH, not the password itself. Open admin.php in your browser the
+    // first time and it will give you this line to paste in.
+    // 'admin_password_hash' => '$2y$10$...',
 );

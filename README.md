@@ -16,6 +16,7 @@ No build tools, no frameworks, no signups — just upload the files to Host Papa
 | `gallery.html`      | The photo gallery page, linked from the menu and under the hero photo |
 | `thank-you.html`    | The "thanks!" page shown after someone sends an enquiry             |
 | `contact.php`       | Receives the form and emails the enquiry to you                     |
+| `admin.php`         | Private page for emailing a customer their booking confirmation     |
 | `css/styles.css`    | All the styling (colours, layout). Edit colours at the very top     |
 | `js/main.js`        | Menu, form checks, the rotating hero photos, footer year            |
 | `images/`           | The logo and the candy floss photos                                 |
@@ -169,6 +170,30 @@ If you have PHP installed, run this in the project folder and open
 ```
 php -S localhost:8000
 ```
+
+---
+
+## 📨 Sending a booking confirmation
+
+`admin.php` is a private page for confirming a booking with the customer by
+email. It sends them a branded confirmation with the date, time, venue, price and
+what's included, and emails **you a copy**, so your inbox keeps a record.
+
+**One-time setup**
+1. Open **https://jjentertainments.co.uk/admin.php**.
+2. Choose a password (at least 10 characters). The page gives you a line starting
+   `'admin_password_hash' =>`.
+3. In cPanel → **File Manager**, edit `config.local.php` and paste that line just
+   above the closing `);`. Save.
+
+**Each booking**
+1. Go to `/admin.php` and log in.
+2. Fill in the booking. The total is worked out at £20 per 10 guests, and you can
+   change it.
+3. Press **Preview email**, check it, then press **Send confirmation**.
+
+The first time you use it, send a test to yourself and check your spam folder. The
+emails come from your `from` address, the same as enquiries.
 
 ---
 
